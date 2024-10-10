@@ -5,4 +5,5 @@ class ImageAssets {
   static const String google = "$root/google_PNG19635.png";
   static const String assets1 = "$root/images (7).jpg";
   static const String assets2 = "$root/Untitled design (1).png";
+  static const String spotify = "$root/spotify-logo-transparent-free-png.webp";
 }

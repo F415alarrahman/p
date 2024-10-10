@@ -30,9 +30,9 @@ class RegisterPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Image.asset(
-                                  ImageAssets.google,
-                                  height: 64,
-                                  width: 64,
+                                  ImageAssets.spotify,
+                                  height: 256,
+                                  width: 256,
                                 ),
                                 Text(
                                   'Register Page',
@@ -43,7 +43,7 @@ class RegisterPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  'Silahkan Lakukan Register Untuk Masuk Aplikasi',
+                                  'Please register to access the application',
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -55,18 +55,18 @@ class RegisterPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Nama'),
+                              Text('Name'),
                               SizedBox(height: 8),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: 'Masukkan Nama',
+                                  labelText: 'Enter Name',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 validator: (e) {
                                   if (e!.isEmpty) {
-                                    return "Nama Wajib Diisi";
+                                    return "Please enter your name (required)";
                                   }
                                   return null; // Mengembalikan null jika valid
                                 },
@@ -83,14 +83,14 @@ class RegisterPage extends StatelessWidget {
                               SizedBox(height: 8),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: 'Masukkan Email',
+                                  labelText: 'Enter Email',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 validator: (e) {
                                   if (e!.isEmpty) {
-                                    return "Email Wajib Diisi";
+                                    return "Please enter your email (required)";
                                   }
                                   return null; // Mengembalikan null jika valid
                                 },
@@ -109,14 +109,14 @@ class RegisterPage extends StatelessWidget {
                                 obscureText:
                                     true, // Menyembunyikan input password
                                 decoration: InputDecoration(
-                                  labelText: 'Masukkan Password',
+                                  labelText: 'Enter Password',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 validator: (e) {
                                   if (e!.isEmpty) {
-                                    return "Password Wajib Diisi";
+                                    return "Please enter your password (required)";
                                   }
                                   return null; // Mengembalikan null jika valid
                                 },
@@ -129,7 +129,12 @@ class RegisterPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text('Forgot Password?'),
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Forgot Password',
+                                    style: TextStyle(color: Colors.black),
+                                  ))
                             ],
                           ),
                           SizedBox(height: 16),
@@ -150,10 +155,10 @@ class RegisterPage extends StatelessWidget {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.green,
                               ),
                               child: Text(
-                                'Daftar',
+                                'Register',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -168,7 +173,7 @@ class RegisterPage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Sudah punya akun? '),
+                                Text('Already have an account?'),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.push(
@@ -180,7 +185,7 @@ class RegisterPage extends StatelessWidget {
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
-                                      color: Colors.blue,
+                                      color: Colors.green,
                                     ),
                                   ),
                                 ),
@@ -188,24 +193,31 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
 
-                          // Google Account Option
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 16),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white,
-                            ),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  ImageAssets.google,
-                                  height: 24,
-                                ),
-                                const Center(
-                                  child: Text("Google akun"),
-                                )
-                              ],
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white,
+                              ),
+                              child: Stack(
+                                children: [
+                                  Image.asset(
+                                    ImageAssets.google,
+                                    height: 24,
+                                  ),
+                                  const Center(
+                                    child: Text("Sign in with Google"),
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],

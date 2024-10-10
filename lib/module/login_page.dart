@@ -15,7 +15,6 @@ class LoginPage extends StatelessWidget {
       child: Consumer<LoginNotifer>(
         builder: (context, value, child) => SafeArea(
           child: Scaffold(
-            resizeToAvoidBottomInset: true,
             body: Form(
               key: value.keyfrom,
               child: SingleChildScrollView(
@@ -30,12 +29,12 @@ class LoginPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Image.asset(
-                                  ImageAssets.google,
-                                  height: 64,
-                                  width: 64,
+                                  ImageAssets.spotify,
+                                  height: 256,
+                                  width: 256,
                                 ),
                                 Text(
-                                  'Login Page',
+                                  'Login',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -43,14 +42,16 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  'Silahkan Lakukan Register Untuk Masuk Aplikasi',
+                                  'Please log in to access the application',
                                   textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
                           ),
                           SizedBox(height: 32),
-                          // Section: Email Field
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -58,14 +59,14 @@ class LoginPage extends StatelessWidget {
                               SizedBox(height: 8),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText: 'Masukkan Email',
+                                  labelText: 'Enter Email',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 validator: (e) {
                                   if (e!.isEmpty) {
-                                    return "Email Wajib Diisi";
+                                    return "Please enter your email (required)";
                                   }
                                   return null; // Mengembalikan null jika valid
                                 },
@@ -84,14 +85,14 @@ class LoginPage extends StatelessWidget {
                                 obscureText:
                                     true, // Menyembunyikan input password
                                 decoration: InputDecoration(
-                                  labelText: 'Masukkan Password',
+                                  labelText: 'Enter Password',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 validator: (e) {
                                   if (e!.isEmpty) {
-                                    return "Password Wajib Diisi";
+                                    return "Please enter your password (required)";
                                   }
                                   return null; // Mengembalikan null jika valid
                                 },
@@ -105,7 +106,11 @@ class LoginPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               TextButton(
-                                  onPressed: () {}, child: Text('Lupa Pasword'))
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Forgot Password',
+                                    style: TextStyle(color: Colors.black),
+                                  ))
                             ],
                           ),
                           SizedBox(height: 16),
@@ -126,10 +131,10 @@ class LoginPage extends StatelessWidget {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.green,
                               ),
                               child: Text(
-                                'Masuk',
+                                'Login',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
@@ -144,7 +149,7 @@ class LoginPage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Belum punya akun? '),
+                                Text("Don't have an account?"),
                                 TextButton(
                                   onPressed: () {
                                     Navigator.push(
@@ -156,7 +161,7 @@ class LoginPage extends StatelessWidget {
                                   child: Text(
                                     'Register',
                                     style: TextStyle(
-                                      color: Colors.blue,
+                                      color: Colors.green,
                                     ),
                                   ),
                                 ),
@@ -164,24 +169,34 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
 
-                          // Google Account Option
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 16),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white,
-                            ),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  ImageAssets.google,
-                                  height: 24,
-                                ),
-                                const Center(
-                                  child: Text("Google akun"),
-                                )
-                              ],
+                          SizedBox(
+                            height: 16,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white,
+                              ),
+                              child: Stack(
+                                children: [
+                                  Image.asset(
+                                    ImageAssets.google,
+                                    height: 24,
+                                  ),
+                                  const Center(
+                                    child: Text("Sign in with Google"),
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],
